@@ -655,8 +655,8 @@ input[type='checkbox'] {
 }
 
 .navbar-custom .navbar-brand.logo-image img {
-    width: 7.0625rem;
-	height: 2rem;
+    width: 6rem;
+	height: 3rem;
 	-webkit-backface-visibility: hidden;
 }
 
@@ -806,7 +806,7 @@ input[type='checkbox'] {
 /*     05. Intro     */
 /*********************/
 .basic-1 {
-	padding-top: 6.5rem;
+	padding-top: 3rem;
 	padding-bottom: 3rem;
 }
 
@@ -2086,7 +2086,7 @@ a:hover.back-to-top {
 
 	/* Intro */
 	.basic-1 {
-		padding-top: 6.875rem;
+		padding-top: 2rem;
 	}
 
 	.basic-1 .text-container {

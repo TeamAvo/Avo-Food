@@ -44,7 +44,7 @@ for day in range(0, 6):
             img = random.choice(time_meal['data'])
             img_url = f'https://source.unsplash.com/1600x900/?{img}'
 
-        card = card_raw.replace('{img}', img_url.replace(' ', '+'))
+        card = card_raw.replace('{img}', img_url.replace(' ', '%20'))
         card = card.replace('{time}', time_meal['title'])
         card_list += card.replace('<!-- Menus -->', menu_list) + '\n'
 
