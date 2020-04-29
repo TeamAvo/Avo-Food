@@ -1,0 +1,60 @@
+index.html: ============
+<!-- LastWeekDropDown -->
+insert accordion
+
+
+
+accordion.html: ============
+{WeekType}
+Last / This / Next
+
+{Week_Title}
+Last Week's Menus / This Week's Menus / Next Week's Menus
+
+<!-- WeekItems -->
+insert item
+
+
+
+item.html: ============
+{WeekType}
+Same as above
+
+headingOne
+{WeekType}days
+
+collapseOne
+{WeekType}days
+
+{bool}
+true / false
+
+{show}
+ show or nothing
+
+{day}
+day
+
+{day_title}
+Monday's Menu
+
+<!-- card -->
+insert card
+
+
+
+card.html: ============
+{img}
+image
+
+{time}
+Breakfast / Lunch / Dinner
+
+<!-- Menus -->
+insert Menu
+
+
+
+menu.html: ============
+{menu}
+menu
