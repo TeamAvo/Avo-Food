@@ -26,7 +26,7 @@ item_list = ''
 avon = datetime.now(timezone('US/Eastern'))
 print(avon.weekday())
 
-for day in range(0, 6):
+for day in range(0, 7):
     response = requests.get(f"https://e82437da.ngrok.io/cafeapi/food?day={day}")
     data = json.loads(response.text)
     #print(data)
