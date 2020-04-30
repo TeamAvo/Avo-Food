@@ -24,7 +24,6 @@ with open('temp/menu.html','r', encoding='UTF8') as f:
 week_type = 'This'
 item_list = ''
 avon = datetime.now(timezone('US/Eastern'))
-print(avon.weekday())
 
 for day in range(0, 7):
     response = requests.get(f"https://e82437da.ngrok.io/cafeapi/food?day={day}")
@@ -56,7 +55,7 @@ for day in range(0, 7):
     item = item.replace('collapseOne', f'collapse{week_type}{days_short[day]}')
     item = item.replace('{day}', days_short[day][:1])
 
-    if day == avon.weekday():
+    if day == avon.weekday() + 1 % 6:
         item = item.replace('{bool}', 'true')
         item = item.replace('{show}', ' show')
         item = item.replace('{day_title}', days_full[day] + ' - Today')

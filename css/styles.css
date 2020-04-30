@@ -912,6 +912,7 @@ input[type='checkbox'] {
 }
 
 .cards-2 .card {
+	width: 18.25rem;
 	margin-bottom: 5.625rem;
 	border: none;
 	background-color: transparent;
