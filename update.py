@@ -26,7 +26,8 @@ item_list = ''
 avon = datetime.now(timezone('US/Eastern'))
 
 for day in range(0, 7):
-    response = requests.get(f"https://e82437da.ngrok.io/cafeapi/food?day={day}")
+    response = requests.get(f"https://3b3895ce.ngrok.io/cafeapi/food?day={day}")
+    print(response.text)
     data = json.loads(response.text)
     #print(data)
     
@@ -37,7 +38,7 @@ for day in range(0, 7):
             menu_list += menu_raw.replace('{menu}', meal_info) + '\n'
 
         if menu_list == '':
-            menu_list = '<p>There is no infromation.</p>'
+            menu_list = '<p>There is no information.</p>'
             img_url = 'https://source.unsplash.com/1600x900/?food'
         else:
             img = random.choice(time_meal['data'])
