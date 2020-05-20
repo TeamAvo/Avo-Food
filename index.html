@@ -23,26 +23,42 @@
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet">
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link id="pagebootstrap" href="css/bootstrap.css" rel="stylesheet">
     <link href="css/fontawesome-all.css" rel="stylesheet">
     <link href="css/swiper.css" rel="stylesheet">
 	<link href="css/magnific-popup.css" rel="stylesheet">
-	<link href="css/styles.css" rel="stylesheet">
-	
-	<!-- Favicon  -->
+	<link id="pagestyle" href="css/styles.css" rel="stylesheet">
+
+    <!-- Dark Mode Support -->
+    <script>
+        var dark = false;
+        function swapStyleSheet(){
+            if (dark) {
+                document.getElementById('pagebootstrap').setAttribute('href', "css/bootstrap.css");
+                document.getElementById('pagestyle').setAttribute('href', "css/styles.css");
+                dark = false;
+            } else {
+                document.getElementById('pagebootstrap').setAttribute('href', "css/bootstrap-dark.css");
+                document.getElementById('pagestyle').setAttribute('href', "css/styles-dark.css");
+                dark = true;
+            }
+        }
+    </script>
+
+    <!-- Favicon  -->
     <link rel="icon" href="images/AVO_Blue.svg">
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
-        <!-- Text Logo - Use this if you don't have a graphic logo -->
-        <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
-
         <!-- Image Logo -->
         <a class="navbar-brand logo-image" href="index.html"><img src="images/AVO_White.svg" alt="alternative"></a>
         
-        <!-- end of mobile menu toggle button -->
+        <!-- Dark Mode Toggle Button -->
+        <a class="dark">
+            <span class="fas fa-moon fa-2x" onclick="swapStyleSheet()">
+        </a>
     </nav> <!-- end of navbar -->
     <!-- end of navbar -->
 
@@ -187,7 +203,7 @@
                     <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Scrambled%20Eggs" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Fresh%20Fruit%20Salad" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Breakfast</h3>
@@ -224,7 +240,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Broccoli%20Slaw" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Pork%20Loin%20with%20Apricot%20Glaze" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -261,7 +277,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Latin%20Roasted%20Vegetables" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Parmesan%20Potato%20Wedges" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Dinner</h3>
@@ -302,7 +318,7 @@
                     <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Pork%20Breakfast%20Sausage%20Links" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Scrambled%20Eggs" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Breakfast</h3>
@@ -339,7 +355,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Basmati%20Rice" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Hawaiian%20Garden%20Burger" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -376,7 +392,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,BBQ%20Pulled%20Pork" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Baked%20Macaroni%20and%20Cheese" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Dinner</h3>
@@ -417,7 +433,7 @@
                     <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Grilled%20Andouille%20Sausage%20Link" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Scrambled%20Eggs" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Breakfast</h3>
@@ -454,7 +470,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Rare%20Deli%20Roast%20Beef" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Mushroom,%20Barley%20Risotto" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -491,7 +507,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Corned%20Beef%20Brisket" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Cheese%20Pizza" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Dinner</h3>
@@ -544,7 +560,7 @@
                     <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Baked%20Tater%20Tots" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Fresh%20Fruit%20Salad" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Breakfast</h3>
@@ -577,7 +593,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Penne%20a%20la%20Vodka" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Blackened%20Catfish,%20Pineapple%20Salsa" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -618,7 +634,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Chicken%20Parmesan" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Sauteed%20Spinach%20and%20Garlic" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Dinner</h3>
@@ -696,7 +712,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,sauteed%20peppers%20and%20onions" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Cheese%20Pizza" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -737,7 +753,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Onion%20Rings" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Roasted%20Corn" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Dinner</h3>
