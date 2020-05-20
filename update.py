@@ -25,8 +25,12 @@ week_type = 'This'
 item_list = ''
 avon = datetime.now(timezone('US/Eastern'))
 
+url_header = requests.get("https://raw.githubusercontent.com/TeamAvo/CafeApp/master/fetch.json")
+
+url_header = json.loads(url_header.text)[0]
+
 for day in range(0, 7):
-    response = requests.get(f"https://3b3895ce.ngrok.io/cafeapi/food?day={day}")
+    response = requests.get(f"https://{url_header}.ngrok.io/cafeapi/food?day={day}")
     print(response.text)
     data = json.loads(response.text)
     #print(data)
