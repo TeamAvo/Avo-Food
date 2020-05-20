@@ -26,7 +26,6 @@ item_list = ''
 avon = datetime.now(timezone('US/Eastern'))
 
 url_header = requests.get("https://raw.githubusercontent.com/TeamAvo/CafeApp/master/fetch.json")
-
 url_header = json.loads(url_header.text)[0]
 
 for day in range(0, 7):
@@ -43,10 +42,10 @@ for day in range(0, 7):
 
         if menu_list == '':
             menu_list = '<p>There is no information.</p>'
-            img_url = 'https://source.unsplash.com/1600x900/?food'
+            img_url = 'https://source.unsplash.com/400x225/?food'
         else:
             img = random.choice(time_meal['data'])
-            img_url = f'https://source.unsplash.com/1600x900/?{img}'
+            img_url = f'https://source.unsplash.com/400x225/?food,{img}'
 
         card = card_raw.replace('{img}', img_url.replace(' ', '%20'))
         card = card.replace('{time}', time_meal['title'])

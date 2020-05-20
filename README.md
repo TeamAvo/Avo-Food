@@ -21,4 +21,4 @@ We will provide the voting system for the students so they can feedback on wheth
 - [ ] Working on the Voting system.
 - [ ] Adding up the informations.
 - [ ] Building cross-platform mobile and pc apps.
-- [ ] Publish to tje local community.
+- [ ] Publish to the local community.
