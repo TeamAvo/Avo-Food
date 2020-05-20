@@ -642,11 +642,6 @@ input[type='checkbox'] {
 /*     03. Navigation     */
 /**************************/
 
-.dark {
-	padding-left: 100%;
-	float: right;
-}
-
 .navbar-custom {
 	padding-top: 0.375rem;
 	padding-bottom: 0.375rem;
