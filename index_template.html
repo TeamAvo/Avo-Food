@@ -49,19 +49,55 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="340618285609-r6colaj22eh4tn822j4723t8bolhsobb.apps.googleusercontent.com">
     <script>
-        // Get profile information
-        function onSignIn(googleUser) {
-            var logedin = googleUser.isSignedIn();
-            if (logedin){
+        function onSuccess(googleUser) {
+            if (googleUser.isSignedIn()){
                 var profile = googleUser.getBasicProfile();
-                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                console.log('Name: ' + profile.getName());
-                console.log('Image URL: ' + profile.getImageUrl());
-                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
                 if (!profile.getEmail().endsWith('@avonoldfarms.com')) {
-                    alert('You\'re not Loged in with Avon Old Farms email account.\nOnly Avon Old Farms School account can be used to prevent duplicate voting.\nTry to use @avonoldfarms.com account.');
+                    alert('You\'re not logged in with Avon Old Farms account.\nPlease login with @avonoldfarms.com account.\n(This is necessary to prevent duplicate voting.)');
+                    var auth2 = gapi.auth2.getAuthInstance(); // Sign out
+                    auth2.signOut().then(function () {
+                        console.log('Signed out.');
+                    });                    
+                } else {
+                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                    console.log('Name: ' + profile.getName());
+                    console.log('Image URL: ' + profile.getImageUrl());
+                    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
                 }
             }
+        }
+
+        function testfun() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            var user = auth2.currentUser.get();
+            var profile = user.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+        }
+
+        function onFailure(error) {
+            console.log(error);
+        }
+
+        function renderButton() {
+            gapi.signin2.render('my-signin2', {
+                'scope': 'profile email',
+                'width': 240,
+                'height': 50,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': onSuccess,
+                'onfailure': onFailure
+            });
         }
     </script>
 
@@ -165,10 +201,13 @@
                                 <h4>This section is not supported yet.</h4>
                                 <p>Vote on your favorite! Tell us which was good! Share your idea!</p>
 
-                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                                <div id="my-signin2"></div>
 
-                                <a class="btn-solid-lg page-scroll" href="#intro">Vote Results for Yesterday</a>
+                                <a class="btn-solid-lg page-scroll" href="javascript:testfun">Vote Results for Yesterday</a>
                                 <a class="btn-solid-lg page-scroll" href="#intro">View All History</a>
+
+                                <input type="button" class="btn-solid-lg page-scroll" onclick="testfun();" value="test">
+                                <input type="button" class="btn-solid-lg page-scroll" onclick="signOut();" value="sign out">
                             </div> <!-- end of tab-pane --> 
                             <!-- end of tab -->
 
@@ -336,5 +375,6 @@
     <script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script> <!-- Google sign in button custom -->
 </body>
 </html>
