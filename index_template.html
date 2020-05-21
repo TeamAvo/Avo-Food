@@ -45,6 +45,26 @@
         }
     </script>
 
+    <!-- Google Login -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="340618285609-r6colaj22eh4tn822j4723t8bolhsobb.apps.googleusercontent.com">
+    <script>
+        // Get profile information
+        function onSignIn(googleUser) {
+            var logedin = googleUser.isSignedIn();
+            if (logedin){
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                if (!profile.getEmail().endsWith('@avonoldfarms.com')) {
+                    alert('You\'re not Loged in with Avon Old Farms email account.\nOnly Avon Old Farms School account can be used to prevent duplicate voting.\nTry to use @avonoldfarms.com account.');
+                }
+            }
+        }
+    </script>
+
     <!-- Favicon  -->
     <link rel="icon" href="images/AVO_Blue.svg">
 </head>
@@ -144,6 +164,9 @@
                                 <h2>Vote</h2>
                                 <h4>This section is not supported yet.</h4>
                                 <p>Vote on your favorite! Tell us which was good! Share your idea!</p>
+
+                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
                                 <a class="btn-solid-lg page-scroll" href="#intro">Vote Results for Yesterday</a>
                                 <a class="btn-solid-lg page-scroll" href="#intro">View All History</a>
                             </div> <!-- end of tab-pane --> 

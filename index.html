@@ -45,6 +45,26 @@
         }
     </script>
 
+    <!-- Google Login -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="340618285609-r6colaj22eh4tn822j4723t8bolhsobb.apps.googleusercontent.com">
+    <script>
+        // Get profile information
+        function onSignIn(googleUser) {
+            var logedin = googleUser.isSignedIn();
+            if (logedin){
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                if (!profile.getEmail().endsWith('@avonoldfarms.com')) {
+                    alert('You\'re not Loged in with Avon Old Farms email account.\nOnly Avon Old Farms School account can be used to prevent duplicate voting.\nTry to use @avonoldfarms.com account.');
+                }
+            }
+        }
+    </script>
+
     <!-- Favicon  -->
     <link rel="icon" href="images/AVO_Blue.svg">
 </head>
@@ -203,7 +223,7 @@
                     <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Sliced%20Black%20Forest%20Ham" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Steel%20Cut%20Oatmeal" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Breakfast</h3>
@@ -240,7 +260,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Chickpea%20and%20Eggplant%20Curry" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Pork%20Loin%20with%20Apricot%20Glaze" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -277,7 +297,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Latin%20Roasted%20Vegetables" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Parmesan%20Potato%20Wedges" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Dinner</h3>
@@ -355,7 +375,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Fettuccine%20Alfredo" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Roasted%20Corn" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -392,7 +412,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Steamed%20Broccoli" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,BBQ%20Pulled%20Pork" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Dinner</h3>
@@ -470,7 +490,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,cinnamon%20glazed%20carrots" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Hoisin%20Pork%20Tacos" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -507,7 +527,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Hawaiian%20Pizza,%20Ham,%20Pineapple" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Corned%20Beef%20Brisket" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Dinner</h3>
@@ -560,7 +580,7 @@
                     <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Baked%20Tater%20Tots" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Turkey%20Breakfast%20Sausage%20Links" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Breakfast</h3>
@@ -593,7 +613,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Braised%20Swiss%20Chard" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Penne%20a%20la%20Vodka" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -675,7 +695,7 @@
                     <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Scrambled%20Eggs" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Double%20Egg,%20Cheese,%20Croissant" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Breakfast</h3>
@@ -712,7 +732,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Chicken%20Fajitas,%20Corn%20Tortillas" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,sauteed%20peppers%20and%20onions" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -753,7 +773,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Roasted%20Corn" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Griddled%20Beet%20Burger" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Dinner</h3>
@@ -867,6 +887,9 @@
                                 <h2>Vote</h2>
                                 <h4>This section is not supported yet.</h4>
                                 <p>Vote on your favorite! Tell us which was good! Share your idea!</p>
+
+                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
                                 <a class="btn-solid-lg page-scroll" href="#intro">Vote Results for Yesterday</a>
                                 <a class="btn-solid-lg page-scroll" href="#intro">View All History</a>
                             </div> <!-- end of tab-pane --> 
