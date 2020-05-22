@@ -49,16 +49,19 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="340618285609-r6colaj22eh4tn822j4723t8bolhsobb.apps.googleusercontent.com">
     <script>
+        function startup() {
+            document.getElementById("loginInfo").innerHTML = "Hi there! Please Sign in with Avon Old Farms school account to vote on your favorite menu!";
+        }
+
         function onSuccess(googleUser) {
             if (googleUser.isSignedIn()){
                 var profile = googleUser.getBasicProfile();
                 if (!profile.getEmail().endsWith('@avonoldfarms.com')) {
                     alert('You\'re not logged in with Avon Old Farms account.\nPlease login with @avonoldfarms.com account.\n(This is necessary to prevent duplicate voting.)');
-                    var auth2 = gapi.auth2.getAuthInstance(); // Sign out
-                    auth2.signOut().then(function () {
-                        console.log('Signed out.');
-                    });                    
+                    document.getElementById("loginInfo").innerHTML = "To prevent duplicate voting, you should be logged in with the Avon Old Farms account.";
+                    signOut(); // Sign out
                 } else {
+                    document.getElementById("loginInfo").innerHTML = "Hi, " + profile.getName() + "!";
                     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
                     console.log('Name: ' + profile.getName());
                     console.log('Image URL: ' + profile.getImageUrl());
@@ -198,7 +201,7 @@
                             <!-- Tab -->
                             <div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="tab-4">
                                 <h2>Vote</h2>
-                                <h4>This section is not supported yet.</h4>
+                                <h4 id="loginInfo">It seems like your web browser does not support JavaScript.</h4>
                                 <p>Vote on your favorite! Tell us which was good! Share your idea!</p>
 
                                 <div id="my-signin2"></div>
@@ -363,6 +366,7 @@
     </div> <!-- end of copyright --> 
     <!-- end of copyright -->
     
+    <element onload="startup()">
     	
     <!-- Scripts -->
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
@@ -376,5 +380,6 @@
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script> <!-- Google sign in button custom -->
+    <script>window.onload = startup();</script>
 </body>
 </html>
