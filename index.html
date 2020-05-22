@@ -49,16 +49,19 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="340618285609-r6colaj22eh4tn822j4723t8bolhsobb.apps.googleusercontent.com">
     <script>
+        function startup() {
+            document.getElementById("loginInfo").innerHTML = "Hi there! Please Sign in with Avon Old Farms school account to vote on your favorite menu!";
+        }
+
         function onSuccess(googleUser) {
             if (googleUser.isSignedIn()){
                 var profile = googleUser.getBasicProfile();
                 if (!profile.getEmail().endsWith('@avonoldfarms.com')) {
                     alert('You\'re not logged in with Avon Old Farms account.\nPlease login with @avonoldfarms.com account.\n(This is necessary to prevent duplicate voting.)');
-                    var auth2 = gapi.auth2.getAuthInstance(); // Sign out
-                    auth2.signOut().then(function () {
-                        console.log('Signed out.');
-                    });                    
+                    document.getElementById("loginInfo").innerHTML = "To prevent duplicate voting, you should be logged in with the Avon Old Farms account.";
+                    signOut(); // Sign out
                 } else {
+                    document.getElementById("loginInfo").innerHTML = "Hi, " + profile.getName() + "!";
                     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
                     console.log('Name: ' + profile.getName());
                     console.log('Image URL: ' + profile.getImageUrl());
@@ -259,7 +262,7 @@
                     <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Scrambled%20Eggs" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Fresh%20Fruit%20Salad" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Breakfast</h3>
@@ -296,7 +299,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Roasted%20Yellow%20Squash" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Pork%20Loin%20with%20Apricot%20Glaze" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -333,7 +336,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Chipotle,%20Garlic%20Flank%20Steak" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Latin%20Roasted%20Vegetables" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Dinner</h3>
@@ -374,7 +377,7 @@
                     <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Pork%20Breakfast%20Sausage%20Links" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Bacon,%20Egg,%20Cheddar%20Flatbread" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Breakfast</h3>
@@ -411,7 +414,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Vegetarian%20Samosa" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Roasted%20Corn" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -448,7 +451,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Baked%20Macaroni%20and%20Cheese" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,BBQ%20Pulled%20Pork" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Dinner</h3>
@@ -489,7 +492,7 @@
                     <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Scrambled%20Eggs" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Homefried%20Potatoes" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Breakfast</h3>
@@ -605,18 +608,18 @@
 </div> <!-- end of item -->
 <div class="item">
     <div id="headingThisThu">
-        <span data-toggle="collapse" data-target="#collapseThisThu" aria-expanded="true" aria-controls="collapseThisThu" role="button">
-            <span class="circle-numbering">T</span><span class="accordion-title">Thursday - Today</span>
+        <span data-toggle="collapse" data-target="#collapseThisThu" aria-expanded="false" aria-controls="collapseThisThu" role="button">
+            <span class="circle-numbering">T</span><span class="accordion-title">Thursday</span>
         </span>
     </div>
-    <div id="collapseThisThu" class="collapse show" aria-labelledby="headingThisThu" data-parent="#accordionThis">
+    <div id="collapseThisThu" class="collapse" aria-labelledby="headingThisThu" data-parent="#accordionThis">
         <div id="services" class="cards-2">
             <div class="container">
                 <div class="col-lg-12">
                     <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Baked%20Tater%20Tots" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Turkey%20Breakfast%20Sausage%20Links" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Breakfast</h3>
@@ -649,7 +652,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Blackened%20Catfish,%20Pineapple%20Salsa" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Spicy%20Pinto%20Bean%20Dip" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -720,18 +723,18 @@
 </div> <!-- end of item -->
 <div class="item">
     <div id="headingThisFri">
-        <span data-toggle="collapse" data-target="#collapseThisFri" aria-expanded="false" aria-controls="collapseThisFri" role="button">
-            <span class="circle-numbering">F</span><span class="accordion-title">Friday</span>
+        <span data-toggle="collapse" data-target="#collapseThisFri" aria-expanded="true" aria-controls="collapseThisFri" role="button">
+            <span class="circle-numbering">F</span><span class="accordion-title">Friday - Today</span>
         </span>
     </div>
-    <div id="collapseThisFri" class="collapse" aria-labelledby="headingThisFri" data-parent="#accordionThis">
+    <div id="collapseThisFri" class="collapse show" aria-labelledby="headingThisFri" data-parent="#accordionThis">
         <div id="services" class="cards-2">
             <div class="container">
                 <div class="col-lg-12">
                     <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Steel%20Cut%20Oatmeal" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Double%20Egg,%20Cheese,%20Croissant" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Breakfast</h3>
@@ -768,7 +771,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,sauteed%20peppers%20and%20onions" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Roasted%20Broccoli" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Lunch</h3>
@@ -809,7 +812,7 @@
 <!-- Card -->
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,All%20Beef%20Hot%20Dog" alt="alternative" width="100%" height="100%">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Griddled%20Beet%20Burger" alt="alternative" width="100%" height="100%">
     </div>
     <div class="card-body">
         <h3 class="card-title">Dinner</h3>
@@ -921,7 +924,7 @@
                             <!-- Tab -->
                             <div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="tab-4">
                                 <h2>Vote</h2>
-                                <h4>This section is not supported yet.</h4>
+                                <h4 id="loginInfo">It seems like your web browser does not support JavaScript.</h4>
                                 <p>Vote on your favorite! Tell us which was good! Share your idea!</p>
 
                                 <div id="my-signin2"></div>
@@ -1086,6 +1089,7 @@
     </div> <!-- end of copyright --> 
     <!-- end of copyright -->
     
+    <element onload="startup()">
     	
     <!-- Scripts -->
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
@@ -1099,5 +1103,6 @@
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script> <!-- Google sign in button custom -->
+    <script>window.onload = startup();</script>
 </body>
 </html>
