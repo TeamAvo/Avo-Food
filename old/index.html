@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Meal information provider for Avon Old Farms School.">
+    <meta name="author" content="Team Avo">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+	<meta property="og:site_name" content="Avo Food - Avon Old Farms School" /> <!-- website name -->
+	<meta property="og:site" content="https://github.com/TeamAvo/Avo-Food" /> <!-- website link -->
+	<meta property="og:title" content="Avo Food - Avon Old Farms School"/> <!-- title shown in the actual shared post -->
+	<meta property="og:description" content="Meal information provider for Avon Old Farms School." /> <!-- description shown in the actual shared post -->
+	<meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+	<meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+	<meta property="og:type" content="article" />
+
+    <!-- Website Title -->
+    <title>Avo Food - Avon Old Farms School</title>
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet">
+    <link id="pagebootstrap" href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <link href="css/swiper.css" rel="stylesheet">
+	<link href="css/magnific-popup.css" rel="stylesheet">
+	<link id="pagestyle" href="css/styles.css" rel="stylesheet">
+
+    <!-- Dark Mode Support -->
+    <script>
+        var dark = false;
+        function swapStyleSheet(){
+            if (dark) {
+                document.getElementById('pagebootstrap').setAttribute('href', "css/bootstrap.css");
+                document.getElementById('pagestyle').setAttribute('href', "css/styles.css");
+                dark = false;
+            } else {
+                document.getElementById('pagebootstrap').setAttribute('href', "css/bootstrap-dark.css");
+                document.getElementById('pagestyle').setAttribute('href', "css/styles-dark.css");
+                dark = true;
+            }
+        }
+    </script>
+
+    <!-- Google Login -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="340618285609-r6colaj22eh4tn822j4723t8bolhsobb.apps.googleusercontent.com">
+    <script>
+        function startup() {
+            document.getElementById("loginInfo").innerHTML = "Hi there! Please Sign in with Avon Old Farms school account to vote on your favorite menu!";
+        }
+
+        function onSuccess(googleUser) {
+            if (googleUser.isSignedIn()){
+                var profile = googleUser.getBasicProfile();
+                if (!profile.getEmail().endsWith('@avonoldfarms.com')) {
+                    alert('You\'re not logged in with Avon Old Farms account.\nPlease login with @avonoldfarms.com account.\n(This is necessary to prevent duplicate voting.)');
+                    document.getElementById("loginInfo").innerHTML = "To prevent duplicate voting, you should be logged in with the Avon Old Farms account.";
+                    signOut(); // Sign out
+                } else {
+                    document.getElementById("loginInfo").innerHTML = "Hi, " + profile.getName() + "!";
+                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                    console.log('Name: ' + profile.getName());
+                    console.log('Image URL: ' + profile.getImageUrl());
+                    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                }
+            }
+        }
+
+        function testfun() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            var user = auth2.currentUser.get();
+            var profile = user.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+        }
+
+        function onFailure(error) {
+            console.log(error);
+        }
+
+        function renderButton() {
+            gapi.signin2.render('my-signin2', {
+                'scope': 'profile email',
+                'width': 240,
+                'height': 50,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': onSuccess,
+                'onfailure': onFailure
+            });
+        }
+    </script>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="images/AVO_Blue.svg">
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
+        <!-- Image Logo -->
+        <a class="navbar-brand logo-image" href="index.html"><img src="images/AVO_White.svg" alt="alternative"></a>
+        
+        <!-- Dark Mode Toggle Button -->
+        <a class="navbar-nav ml-auto">
+            <span class="fas fa-moon fa-2x" onclick="swapStyleSheet()">
+        </a>
+    </nav> <!-- end of navbar -->
+    <!-- end of navbar -->
+
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <h1>Avo Food</h1>
+                            <p class="p-heading p-large">We provide meal information at Avon Old Farms School.</p>
+                        </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+
+    <!-- Intro -->
+    <div id="intro" class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="text-container">
+                    <div class="section-title">Avo Food</div>
+                    <h2>Welcome to Avon Old Farms Refectory!</h2>
+                </div> <!-- end of text-container -->
+            </div> <!-- end of row -->
+
+            <!-- Details 2 -->
+            <div class="tabs">
+                <div class="basic-1">
+                    <div class="container">
+                        
+                        <!-- Tabs Links -->
+                        <ul class="nav nav-tabs" id="ariaTabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link" id="nav-tab-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="false"><i class="fas fa-th"></i> Last Week</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" id="nav-tab-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="true"><i class="fas fa-th"></i> This Week</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="nav-tab-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fas fa-th"></i> Next Week</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="nav-tab-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><i class="fas fa-th"></i> Vote</a>
+                            </li>
+                        </ul>
+                        <!-- end of tabs links -->
+                        
+                        <!-- Tabs Content -->
+                        <div class="tab-content" id="ariaTabsContent">
+                            <!-- Tab -->
+                            <div class="tab-pane fade" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
+                                <h2>This section is not supported yet.</h2>
+                                <!-- LastWeekDropDown --> 
+
+                            </div> <!-- end of tab-pane --> 
+                            <!-- end of tab -->
+
+                            <!-- Tab -->
+                            <div class="tab-pane fade active show" id="tab-2" role="tabpanel" aria-labelledby="tab-2">
+                                
+                                <div id="details" class="accordion">
+     <!-- Accordion -->
+     <div class="container" id="accordionThis">
+         <h2>This Week's Menus</h2>
+         
+         <div class="item">
+    <div id="headingThisSun">
+        <span data-toggle="collapse" data-target="#collapseThisSun" aria-expanded="false" aria-controls="collapseThisSun" role="button">
+            <span class="circle-numbering">S</span><span class="accordion-title">Sunday</span>
+        </span>
+    </div>
+    <div id="collapseThisSun" class="collapse" aria-labelledby="headingThisSun" data-parent="#accordionThis">
+        <div id="services" class="cards-2">
+            <div class="container">
+                <div class="col-lg-12">
+                    <!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Scrambled%20Eggs" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Breakfast</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Scrambled Eggs</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Lunch</h3>
+        <ul class="list-unstyled li-space-lg">
+            <p>There is no information.</p>
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Dinner</h3>
+        <ul class="list-unstyled li-space-lg">
+            <p>There is no information.</p>
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of container -->
+        </div> <!-- end of cards-2 -->
+    </div>
+</div> <!-- end of item -->
+<div class="item">
+    <div id="headingThisMon">
+        <span data-toggle="collapse" data-target="#collapseThisMon" aria-expanded="false" aria-controls="collapseThisMon" role="button">
+            <span class="circle-numbering">M</span><span class="accordion-title">Monday</span>
+        </span>
+    </div>
+    <div id="collapseThisMon" class="collapse" aria-labelledby="headingThisMon" data-parent="#accordionThis">
+        <div id="services" class="cards-2">
+            <div class="container">
+                <div class="col-lg-12">
+                    <!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Fried%20Hash%20Brown%20Patty" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Breakfast</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Scrambled Eggs</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Banana Cinnamon Pancakes</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Sliced Black Forest Ham</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Fried Hash Brown Patty</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Steel Cut Oatmeal</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Fresh Fruit Salad</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Roasted%20Potatoes%20with%20Cumin" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Lunch</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Pork Loin with Apricot Glaze</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Chickpea and Eggplant Curry</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Jamaican Jerk Chicken Thighs</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Broccoli Slaw</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Roasted Yellow Squash</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Roasted Potatoes with Cumin</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Parmesan%20Potato%20Wedges" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Dinner</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Chipotle, Garlic Flank Steak</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Parmesan Potato Wedges</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Latin Roasted Vegetables</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of container -->
+        </div> <!-- end of cards-2 -->
+    </div>
+</div> <!-- end of item -->
+<div class="item">
+    <div id="headingThisTue">
+        <span data-toggle="collapse" data-target="#collapseThisTue" aria-expanded="false" aria-controls="collapseThisTue" role="button">
+            <span class="circle-numbering">T</span><span class="accordion-title">Tuesday</span>
+        </span>
+    </div>
+    <div id="collapseThisTue" class="collapse" aria-labelledby="headingThisTue" data-parent="#accordionThis">
+        <div id="services" class="cards-2">
+            <div class="container">
+                <div class="col-lg-12">
+                    <!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Fresh%20Fruit%20Salad" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Breakfast</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Scrambled Eggs</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Bacon, Egg, Cheddar Flatbread</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Pork Breakfast Sausage Links</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Sweet Potato Hash with Peppers</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Steel Cut Oatmeal</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Fresh Fruit Salad</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Fettuccine%20Alfredo" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Lunch</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Signature Cheeseburger, Brioche Bun</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Fettuccine Alfredo</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Hawaiian Garden Burger</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Roasted Corn</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Vegetarian Samosa</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Basmati Rice</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Baked%20Macaroni%20and%20Cheese" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Dinner</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">BBQ Pulled Pork</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Baked Macaroni and Cheese</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Steamed Broccoli</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of container -->
+        </div> <!-- end of cards-2 -->
+    </div>
+</div> <!-- end of item -->
+<div class="item">
+    <div id="headingThisWed">
+        <span data-toggle="collapse" data-target="#collapseThisWed" aria-expanded="false" aria-controls="collapseThisWed" role="button">
+            <span class="circle-numbering">W</span><span class="accordion-title">Wednesday</span>
+        </span>
+    </div>
+    <div id="collapseThisWed" class="collapse" aria-labelledby="headingThisWed" data-parent="#accordionThis">
+        <div id="services" class="cards-2">
+            <div class="container">
+                <div class="col-lg-12">
+                    <!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Scrambled%20Eggs" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Breakfast</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Scrambled Eggs</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Egg White, Chive, Cheddar Scramble</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Grilled Andouille Sausage Link</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Homefried Potatoes</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Steel Cut Oatmeal</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Fresh Fruit Salad</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,cinnamon%20glazed%20carrots" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Lunch</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Rare Deli Roast Beef</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Hoisin Pork Tacos</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Filipino Chicken Adobo</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Mushroom, Barley Risotto</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Snow Peas, Cabbage, Squash, Onion</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">cinnamon glazed carrots</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Hawaiian%20Pizza,%20Ham,%20Pineapple" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Dinner</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Corned Beef Brisket</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Barbecue Chicken Thighs</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Cheese Pizza</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Hawaiian Pizza, Ham, Pineapple</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Steamed Carrots</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Boiled New Potatoes, Dill</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of container -->
+        </div> <!-- end of cards-2 -->
+    </div>
+</div> <!-- end of item -->
+<div class="item">
+    <div id="headingThisThu">
+        <span data-toggle="collapse" data-target="#collapseThisThu" aria-expanded="false" aria-controls="collapseThisThu" role="button">
+            <span class="circle-numbering">T</span><span class="accordion-title">Thursday</span>
+        </span>
+    </div>
+    <div id="collapseThisThu" class="collapse" aria-labelledby="headingThisThu" data-parent="#accordionThis">
+        <div id="services" class="cards-2">
+            <div class="container">
+                <div class="col-lg-12">
+                    <!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Steel%20Cut%20Oatmeal" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Breakfast</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Scrambled Eggs</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Turkey Breakfast Sausage Links</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Baked Tater Tots</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Steel Cut Oatmeal</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Fresh Fruit Salad</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Tostones" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Lunch</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Blackened Catfish, Pineapple Salsa</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Penne a la Vodka</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Spicy Pinto Bean Dip</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Whole Wheat Pita Bread</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Braised Swiss Chard</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Thyme Roasted Mushrooms, Onions</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Tostones</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Chicken%20Parmesan" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Dinner</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Chicken Parmesan</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Penne Marinara</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Sauteed Spinach and Garlic</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of container -->
+        </div> <!-- end of cards-2 -->
+    </div>
+</div> <!-- end of item -->
+<div class="item">
+    <div id="headingThisFri">
+        <span data-toggle="collapse" data-target="#collapseThisFri" aria-expanded="false" aria-controls="collapseThisFri" role="button">
+            <span class="circle-numbering">F</span><span class="accordion-title">Friday</span>
+        </span>
+    </div>
+    <div id="collapseThisFri" class="collapse" aria-labelledby="headingThisFri" data-parent="#accordionThis">
+        <div id="services" class="cards-2">
+            <div class="container">
+                <div class="col-lg-12">
+                    <!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Double%20Egg,%20Cheese,%20Croissant" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Breakfast</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Scrambled Eggs</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Double Egg, Cheese, Croissant</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Pork Sausage Link</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Sunrise Blend, Cinnamon, Cranberries</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Steel Cut Oatmeal</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Fresh Fruit Salad</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Chicken%20Fajitas,%20Corn%20Tortillas" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Lunch</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Sausage Pizza</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Cheese Pizza</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Chicken Fajitas, Corn Tortillas</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Seared Mushroom Quesadilla</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">sauteed peppers and onions</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Roasted Broccoli</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Roasted Tomato Rice</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food,Roasted%20Corn" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Dinner</h3>
+        <ul class="list-unstyled li-space-lg">
+            <li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">All Beef Hot Dog</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Griddled Beet Burger</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Chickpea Quinoa Burger, WW Bun</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Roasted Corn</div>
+</li>
+<li class="media">
+    <i class="fas fa-square"></i>
+    <div class="media-body">Onion Rings</div>
+</li>
+
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of container -->
+        </div> <!-- end of cards-2 -->
+    </div>
+</div> <!-- end of item -->
+<div class="item">
+    <div id="headingThisSat">
+        <span data-toggle="collapse" data-target="#collapseThisSat" aria-expanded="true" aria-controls="collapseThisSat" role="button">
+            <span class="circle-numbering">S</span><span class="accordion-title">Saturday - Today</span>
+        </span>
+    </div>
+    <div id="collapseThisSat" class="collapse show" aria-labelledby="headingThisSat" data-parent="#accordionThis">
+        <div id="services" class="cards-2">
+            <div class="container">
+                <div class="col-lg-12">
+                    <!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Breakfast</h3>
+        <ul class="list-unstyled li-space-lg">
+            <p>There is no information.</p>
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Lunch</h3>
+        <ul class="list-unstyled li-space-lg">
+            <p>There is no information.</p>
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+<!-- Card -->
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid" src="https://source.unsplash.com/400x225/?food" alt="alternative" width="100%" height="100%">
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Dinner</h3>
+        <ul class="list-unstyled li-space-lg">
+            <p>There is no information.</p>
+        </ul>
+    </div>
+</div>
+<!-- end of card -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of container -->
+        </div> <!-- end of cards-2 -->
+    </div>
+</div> <!-- end of item -->
+
+
+     </div> <!-- end of accordion-container -->
+     <!-- end of accordion -->
+ </div> <!-- end of accordion -->
+ <!-- end of details 1 --> 
+
+                            </div> <!-- end of tab-pane -->
+                            <!-- end of tab -->
+
+                            <!-- Tab -->
+                            <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="tab-3">
+                                <h2>This section is not supported yet.</h2>
+                                <!-- NextWeekDropDown --> 
+
+                            </div> <!-- end of tab-pane -->
+                            <!-- end of tab -->
+
+                            <!-- Tab -->
+                            <div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="tab-4">
+                                <h2>Vote</h2>
+                                <h4 id="loginInfo">It seems like your web browser does not support JavaScript.</h4>
+                                <p>Vote on your favorite! Tell us which was good! Share your idea!</p>
+
+                                <div id="my-signin2"></div>
+
+                                <a class="btn-solid-lg page-scroll" href="javascript:testfun">Vote Results for Yesterday</a>
+                                <a class="btn-solid-lg page-scroll" href="#intro">View All History</a>
+
+                                <input type="button" class="btn-solid-lg page-scroll" onclick="testfun();" value="test">
+                                <input type="button" class="btn-solid-lg page-scroll" onclick="signOut();" value="sign out">
+                            </div> <!-- end of tab-pane --> 
+                            <!-- end of tab -->
+
+                        </div> <!-- end of tab-content -->
+                        <!-- end of tabs content -->
+
+                    </div> <!-- end of tabs-container -->
+                </div><!-- end of area-1 on same line and no space between comments to eliminate margin white space -->
+            </div> <!-- end of tabs -->
+            <!-- end of details 2 -->
+
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of intro -->
+
+    <!-- Team -->
+    <div class="basic-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Contributors</h2>
+                    <p class="p-heading">It was impossible without the contribution of these people.</p>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <div class="image-wrapper">
+                            <img class="img-fluid" src="images/HectorVazquez.png" alt="alternative">
+                        </div> <!-- end of image-wrapper -->
+                        <p class="p-large">Hector Vazquez</p>
+                        <p class="job-title">Executive Chef at Avon Old Farms School</p>
+                        <span class="social-icons">
+                            <span class="fa-stack">
+                                <a href="mailto:vazquezh@avonoldfarms.com">
+                                    <span class="hexagon"></span>
+                                    <i class="fas fa-envelope fa-stack-1x"></i>
+                                </a>
+                            </span>
+                        </span>
+                    </div> <!-- end of team-member -->
+                    <!-- end of team member -->
+
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <div class="image-wrapper">
+                            <img class="img-fluid" src="images/SpencerLi.png" alt="alternative">
+                        </div> <!-- end of image wrapper -->
+                        <p class="p-large">Spencer Li</p>
+                        <p class="job-title">Backend / Frontend Developer</p>
+                        <span class="social-icons">
+                            <span class="fa-stack">
+                                <a href="mailto:lis@avonoldfarms.com">
+                                    <span class="hexagon"></span>
+                                    <i class="fas fa-envelope fa-stack-1x"></i>
+                                </a>
+                            </span>
+                            <span class="fa-stack">
+                                <a href="https://github.com/MovoLovo">
+                                    <span class="hexagon"></span>
+                                    <i class="fab fa-github fa-stack-1x"></i>
+                                </a>
+                            </span>
+                        </span>
+                    </div> <!-- end of team-member -->
+                    <!-- end of team member -->
+
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <div class="image-wrapper">
+                            <img class="img-fluid" src="images/JunPark.png" alt="alternative">
+                        </div> <!-- end of image wrapper -->
+                        <p class="p-large">Jun Park</p>
+                        <p class="job-title">Backend / Frontend Developer</p>
+                        <span class="social-icons">
+                            <span class="fa-stack">
+                                <a href="mailto:junpark0207@gmail.com">
+                                    <span class="hexagon"></span>
+                                    <i class="fas fa-envelope fa-stack-1x"></i>
+                                </a>
+                            </span>
+                            <span class="fa-stack">
+                                <a href="https://github.com/Nitro1231">
+                                    <span class="hexagon"></span>
+                                    <i class="fab fa-github fa-stack-1x"></i>
+                                </a>
+                            </span>
+                        </span>
+                    </div> <!-- end of team-member -->
+                    <!-- end of team member -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-2 -->
+    <!-- end of team -->
+
+    <!-- Contact -->
+    <div id="contact" class="form-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="text-container">
+                        <div class="section-title">INFO</div>
+                        <h2>About Avo</h2>
+                        <p>We are the separated and independent student community development team. We consider the student's inconvenience and develop a product that can solve the problem.</p>
+                        <ul class="list-unstyled li-space-lg">
+                            <li class="address"><i class="fas fa-map-marker-alt"></i>500 Old Farms Rd, Avon, CT 06001, United States</li>
+                            <li><i class="fab fa-discord"></i><a href="">Spencillian#6315</a></li>
+                            <li><i class="fab fa-discord"></i><a href="">Nitro#1781</a></li>
+                            </br>
+                            <li><i class="fas fa-envelope"></i><a href="mailto:lis@avonoldfarms.com">lis@avonoldfarms.com</a></li>
+                            <li><i class="fas fa-envelope"></i><a href="mailto:junpark0207@gmail.com">junpark0207@gmail.com</a></li>
+                        </ul>
+                        <h3>More information about team Avo</h3>
+
+                        <span class="fa-stack">
+                            <a href="https://github.com/TeamAvo">
+                                <span class="hexagon"></span>
+                                <i class="fab fa-github fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="https://teamavo.github.io">
+                                <span class="hexagon"></span>
+                                <i class="far fa-paper-plane fa-stack-1x"></i>
+                            </a>
+                        </span>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+                    <div class="image-container">
+                        <img class="img-fluid" src="images/2016boys_waiter_with_mascot.jpg" alt="alternative">
+                    </div> <!-- end of image-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of form-2 -->
+    <!-- end of contact -->
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-small">Copyright © 2020 <a href="https://inovatik.com">Template by Inovatik</a></p>
+                    <p class="p-small">Copyright © 2020 Avo</p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright --> 
+    <!-- end of copyright -->
+    
+    <element onload="startup()">
+    	
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+    <script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+    <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script> <!-- Google sign in button custom -->
+    <script>window.onload = startup();</script>
+</body>
+</html>
