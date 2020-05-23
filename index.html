@@ -60,7 +60,7 @@
         function callMealAPI (type) {
             var date = new Date("2020-02-01");
             var time = "/" + date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
-            var url = "https://avonoldfarms.flikisdining.com/menu/api/weeks/school/avon-old-farms/menu-type/" + type + time + "/?format=json";
+            var url = "http://cors.io/?https://avonoldfarms.flikisdining.com/menu/api/weeks/school/avon-old-farms/menu-type/" + type + time + "/?format=json";
             let request = new XMLHttpRequest();
             request.open("GET", url);
             request.send();
