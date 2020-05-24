@@ -27,8 +27,22 @@
     <link href="css/fontawesome-all.css" rel="stylesheet">
     <link href="css/swiper.css" rel="stylesheet">
 	<link href="css/magnific-popup.css" rel="stylesheet">
-	<link id="pagestyle" href="css/styles.css" rel="stylesheet">
+    <link id="pagestyle" href="css/styles.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+    <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+    <script>
+    $(function() {
+        $("#datePick").datepicker({
+            dateFormat: 'yy-mm-dd',
+            onSelect:function(dateText, inst) {
+                    console.log(dateText);
+                    console.log(inst);
+            }
+        });
+    });
+    </script>
     <!-- Dark Mode Support -->
     <script>
         var dark = false;
@@ -49,27 +63,41 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="340618285609-r6colaj22eh4tn822j4723t8bolhsobb.apps.googleusercontent.com">
     <script>
+        var currentBreakfast, currentLunch, currentDinner;
+        var periodBreakfast, periodLunch, periodDinner;
         function startup() {
+            var date = new Date();
             document.getElementById("loginInfo").innerHTML = "Hi there! Please Sign in with Avon Old Farms school account to vote on your favorite menu!";
+            document.getElementById("datePick").value = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
 
-            requestCallback("breakfast", false);
+            currentBreakfast = requestCallback("breakfast", date);
+            currentLunch = requestCallback("lunch", date);
+            currentDinner = requestCallback("dinner", date);
+            //data = requestCallback("breakfast", new Date("2020-02-01"));
         }
 
-        function requestCallback(type, period) {
-            var date = new Date("2020-02-01");
+        function periodCallback () {
+            
+        }
+
+        async function requestCallback(type, date) {
             var time = "/" + date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
             var url = "https://avonoldfarms.flikisdining.com/menu/api/weeks/school/avon-old-farms/menu-type/" + type + time + "?format=json-p";
-            $.ajax({
+            var returnData;
+            await $.ajax({
                 url: url,
                 dataType: 'jsonp',
                 success: function (data, status) {
-                    console.log(data);
+                    console.log("Meal information callback successful.")
+                    returnData = data;
                 },
                 error: function(XHR, textStatus, errorThrown) {
-                    alert("error: " + textStatus);
-                    alert("error: " + errorThrown);
-                }    
+                    console.log("error: " + textStatus);
+                    console.log("error: " + errorThrown);
+                    returnData = false;
+                }
             });
+            return returnData;
         }
 
         function onSuccess(googleUser) {
@@ -121,6 +149,16 @@
                 'onfailure': onFailure
             });
         }
+
+        jQuery.browser = {};
+        (function () {
+            jQuery.browser.msie = false;
+            jQuery.browser.version = 0;
+            if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+            jQuery.browser.msie = true;
+            jQuery.browser.version = RegExp.$1;
+        }
+        })();
     </script>
     <!-- Favicon  -->
     <link rel="icon" href="images/AVO_Blue.svg">
@@ -192,6 +230,7 @@
                             <!-- Tab -->
                             <div class="tab-pane fade" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
                                 <h2>This section is not supported yet.</h2>
+                                <input type="text" id="datePick" name="datePick" value="10/24/1984"/>
                                 <!-- LastWeekDropDown --> 
 
                             </div> <!-- end of tab-pane --> 
@@ -372,11 +411,8 @@
         </div> <!-- end of container -->
     </div> <!-- end of copyright --> 
     <!-- end of copyright -->
-    
-    <element onload="startup()">
     	
     <!-- Scripts -->
-    <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
     <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
     <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
     <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
