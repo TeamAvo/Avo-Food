@@ -51,26 +51,25 @@
     <script>
         function startup() {
             document.getElementById("loginInfo").innerHTML = "Hi there! Please Sign in with Avon Old Farms school account to vote on your favorite menu!";
-            
-            var breakfast = JSON.parse(callMealAPI("breakfast"));
-            var lunch = JSON.parse(callMealAPI("lunch"));
-            var dinner = JSON.parse(callMealAPI("dinner"));
+
+            requestCallback("breakfast", false);
         }
 
-        function callMealAPI (type) {
+        function requestCallback(type, period) {
             var date = new Date("2020-02-01");
             var time = "/" + date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
-            var url = "https://avonoldfarms.flikisdining.com/menu/api/weeks/school/avon-old-farms/menu-type/" + type + time + "/?format=json";
-            let request = new XMLHttpRequest();
-            request.open("GET", url);
-            request.send();
-            request.onload = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    return this.responseText;
-                } else {
-                    alert("An error occurred while calling the API. If the problem persists, contact the administrator.");
-                }
-            };
+            var url = "https://avonoldfarms.flikisdining.com/menu/api/weeks/school/avon-old-farms/menu-type/" + type + time + "?format=json-p";
+            $.ajax({
+                url: url,
+                dataType: 'jsonp',
+                success: function (data, status) {
+                    console.log(data);
+                },
+                error: function(XHR, textStatus, errorThrown) {
+                    alert("error: " + textStatus);
+                    alert("error: " + errorThrown);
+                }    
+            });
         }
 
         function onSuccess(googleUser) {
@@ -123,7 +122,6 @@
             });
         }
     </script>
-
     <!-- Favicon  -->
     <link rel="icon" href="images/AVO_Blue.svg">
 </head>
